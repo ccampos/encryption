@@ -1,19 +1,22 @@
-function encryptionFunction(letterNumber) {
-  return (3 * letterNumber + 5) % 26;
+function encryptionFunction(letterNumber, modNumber) {
+  return (3 * letterNumber + 5) % modNumber;
 }
 
-function convert(word, functionDefinition) {
-  var newWordArray = [],
-    wordArray = [];
+function convert(word, functionDefinition, modNumber) {
+  var newWordArray = [];
   for (let i = 0; i < word.length; i++) {
-    let transformedLetterNumber = functionDefinition(alphabet[word[i]]);
-    for (let property in alphabet) {
-      if (alphabet[property] == transformedLetterNumber) {
-        newWordArray.push(property);
+    if (word[i] == ' ') {
+      newWordArray.push(' ');
+    } else {
+      let transformedLetterNumber = functionDefinition(alphabet[word[i]], modNumber);
+      for (let property in alphabet) {
+        if (alphabet[property] == transformedLetterNumber) {
+          newWordArray.push(property);
+        }
       }
     }
   }
-  return newWordArray;
+  return newWordArray.join('');
 }
 
 const alphabet = {
@@ -45,4 +48,4 @@ const alphabet = {
   Z: 26
 };
 
-convert("DISCRETE MATH", encryptionFunction);
+console.log(convert("DISCRETE MATH", encryptionFunction, 26));
