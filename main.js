@@ -2,6 +2,10 @@ function encryptionFunction(letterNumber, modNumber) {
   return (3 * letterNumber + 5) % modNumber;
 }
 
+function encryptionFunction2(letterNumber, modNumber) {
+  return (3 * letterNumber + 3) % modNumber;
+}
+
 function convert(word, functionDefinition, modNumber) {
   var newWordArray = [];
   for (let i = 0; i < word.length; i++) {
@@ -48,4 +52,5 @@ const alphabet = {
   Z: 26
 };
 
-console.log(convert("DISCRETE MATH", encryptionFunction, 26));
+//console.log(convert("DISCRETE MATH", encryptionFunction, 26));
+console.log(convert("UNIVERSITY", encryptionFunction2, 26));
